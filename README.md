@@ -65,3 +65,9 @@ sysInfo | neoFetch
 - [ ] Internal camera (There is no driver for this Camera available)
 - [ ] Keyboard (FN Keys F8-F12)
 - [ ] mini SD Card Reader
+
+# TODO
+- [ ] CPUTsync neu
+- [ ] FN lock
+- [ ] Sidecar testen
+
