@@ -6,6 +6,7 @@ sysInfo | neoFetch
 ![T460](Images/SysInfo.png) | ![T460](Images/NeoFetch.png)
 
 # Update History
+- [x] macOS 11.6.4
 - [x] macOS 11.2.1
 - [x] macOS 11.2
 - [x] macOS 11.1
@@ -51,8 +52,9 @@ sysInfo | neoFetch
 - [x] Realtek RTL8153 Gigabit port
 - [x] Realtek ALC294 Audio (including headphones jack & usb-c headsets)
 - [x] Wi-Fi & Bluetooth (including Apple services)
-- [x] Trackpad (without gestures)
-- [x] Touchscreen (including Stylus)
+- [x] Trackpad (with gestures)
+- [x] Screenpad
+- [x] Touchscreen (including Stylus, sometimes not working)
 - [x] Sleep / Wake / Shutdown / Reboot (lid sleep and lid wake)
 - [x] Keyboard (incuding FN Keys F1-F6)
 - [x] iMessage, FaceTime, App Store, iTunes Store (with valid smbios)
@@ -61,6 +63,5 @@ sysInfo | neoFetch
 # What's not working ⚠️
 - [ ] Sidecar Wireless (doesn't work without apple native WIFI card)
 - [ ] Internal camera (There is no driver for this Camera available)
-- [ ] Trackpad gestures (Trackpad is detected as mouse)
-- [ ] Keyboard (FN Keys F7-F12)
+- [ ] Keyboard (FN Keys F8-F12)
 - [ ] mini SD Card Reader
