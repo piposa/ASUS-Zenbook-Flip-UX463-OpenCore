@@ -59,15 +59,18 @@ sysInfo | neoFetch
 - [x] Keyboard (incuding FN Keys F1-F6)
 - [x] iMessage, FaceTime, App Store, iTunes Store (with valid smbios)
 - [x] DRM support (iTunes Movies, Apple TV+, Amazon Prime and Netflix, and others)
+- [x] mini SD Card Reader
 
 # What's not working ⚠️
 - [ ] Sidecar Wireless (doesn't work without apple native WIFI card)
 - [ ] Internal camera (There is no driver for this Camera available)
 - [ ] Keyboard (FN Keys F8-F12)
-- [ ] mini SD Card Reader
 
 # TODO
-- [ ] CPUTsync neu
+- [x] CPUTsync neu
 - [ ] FN lock
 - [ ] Sidecar testen
-
+- [ ] Secureboot enable
+- [x] Keyboard repeat rate
+- [x] USB Ethernet Adapter
+- [ ] Fancontrol? FN Key?
