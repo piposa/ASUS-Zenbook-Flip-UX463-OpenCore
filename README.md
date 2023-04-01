@@ -6,6 +6,8 @@ sysInfo | neoFetch
 ![T460](Images/SysInfo.png) | ![T460](Images/NeoFetch.png)
 
 # Update History
+- [x] macOS 11.7.5
+- [x] macOS 11.6.5
 - [x] macOS 11.6.4
 - [x] macOS 11.2.1
 - [x] macOS 11.2
@@ -74,3 +76,10 @@ sysInfo | neoFetch
 - [x] Keyboard repeat rate
 - [x] USB Ethernet Adapter
 - [ ] Fancontrol? FN Key?
+- [ ] Sleep / Hibernate
+- [ ] Voltageshift usage /optimization
+- [ ] Lidwake sleep / wakeup (Main screen resolution
+- [ ] Keyboard wakeup (only usb working)
+- [ ] Stylus not working
+- [ ] sleep ejects sd card
+

@@ -1,5 +1,135 @@
 OpenCore Changelog
 ==================
+#### v0.9.0
+- Resolved issues with verbose boot log appearing over picker graphics
+- Added version number to EnableGop UI section, so tool builders can track it
+- Added `ProvideCurrentCpuInfo` support for macOS 13.3 DP
+- Added AMD support, GOP offset auto-detection and macOS 10.11+ support to EnableGop vBIOS insertion script
+- Included precompiled EDK-II `EfiRom` and `GenFfs` in `Utilities/BaseTools` with OpenCore releases
+
+#### v0.8.9
+- Improved debug logging when applying ACPI patches
+- Fixed loading macOS with legacy boot without Apple Secure Boot
+- Added Linux support to legacy boot BootInstall script
+- Updated builtin firmware versions for SMBIOS and the rest
+- Fixed incomplete console mode initialisation when started in graphics mode
+- Provided additional UEFI forge mode, for use in firmware drivers
+- Implemented firmware driver enabling pre-OpenCore graphics on non-natively supported GPUs on EFI-era Macs
+- Prevented unwanted clear screen to console background colour when in graphics mode
+- Added `ResizeUsePciRbIo` quirk to workaround broken PciIo on some UEFI firmwares, thx @xCuri0
+- Fixed crash while using `SysReport` on older Atom systems
+- Fixed kexts without a Contents folder not being patched during a cacheless boot
+- Added read-only sections (`.rdata`) to all drivers for better memory protection when supported
+- Fixed crash while using `SysReport` on systems with non-audio HDA codecs
+- Fixed debug script support for GDB and LLDB
+- Fixed legacy boot debug builds asserting on macOS loading
+
+#### v0.8.8
+- Updated underlying EDK II package to edk2-stable202211
+- Updated AppleKeyboardLayouts.txt from macOS 13.1
+- Updated builtin firmware versions for SMBIOS and the rest
+- Updated ocvalidate to allow duplicate tool if FullNvramAccess is different
+- Fixed `Kernel` -> `Block` entries not being processed if one was skipped due to `Arch`
+- Fixed intermittent prelinking failures caused by XML corruption when kext blocking is enabled
+- Removed magic Acidanthera sequence from OpenCore files used for picker hiding
+- Added `.contentVisibility` to hide and disable boot entries
+- Added Linux support to QemuBuild.command used for Duet debugging
+- Built in new secure PE/COFF loader
+- Added prebuilt mtoc universal binary with Apple Silicon support
+- Corrected OpenDuet build on Apple Silicon
+- Added SD card device path support for boot device selection
+
+#### v0.8.7
+- Removed unwanted clear screen when launching non-text boot entry
+- Fixed TSC/FSB for AMD CPUs in ProvideCurrentCpuInfo, thx @Shaneee
+- Added `Misc` -> `Boot` -> `HibernateSkipsPicker` not to show picker if waking from macOS hibernation
+- Changed macrecovery to download files into `com.apple.recovery.boot` by default, thx @dreamwhite
+- Supported Apple builtin picker (using `BootKicker.efi` or `PickerMode` `Apple`) when running GPUs without Mac-EFI support on units such as the MacPro5,1 (thx @cdf, @tsialex)
+- Enabled `PickerMode` `Apple` to successfully launch selected entry
+- Enabled `BootKicker.efi` to successfully launch selected entry (via reboot) (thx @cdf)
+- Added spoof proof UEFI 2.x checking to OpenVariableRuntimeDxe, thx @dakanji
+
+#### v0.8.6
+- Updated NVRAM save script for compatibilty with earlier macOS (Snow Leopard+ tested)
+- Updated NVRAM save script to automatically install as launch daemon (Yosemite+) or logout hook (older macOS)
+- Fixed maximum click duration and double click speed for non-standard poll frequencies
+- Added support for pointer dwell-clicking
+- Fixed recursive loop crash at first non-early log line on some systems
+- Fixed early log preservation when using unsafe fast file logging
+- Updated builtin firmware versions for SMBIOS and the rest
+- Resolved wake-from-sleep failure on EFI 1.1 systems (including earlier Macs) with standalone emulated NVRAM driver
+- Updated macrecovery commands with macOS 12 and 13, thx @Core-i99
+- Updates SSDT-BRG0 with macOS-specific STA to avoid compatibility issues on Windows, thx @Lorys89
+- Fixed memory issues in OpenLinuxBoot causing crashes on 32-bit UEFI firmware
+
+#### v0.8.5
+- Updated builtin firmware versions for SMBIOS and the rest
+- Moved CPU objects that exist only in Windows Server 2022 into `SSDT-HV-DEV-WS2022.dsl`
+- Updated Hyper-V device path expansion to support hot add/remove of disks
+- Improved verbose logging during kernel patching
+
+#### v0.8.4
+- Added checks for `Driver` -> `LoadEarly` in ocvalidate
+- Added `FullNvramAccess` option for tools which require direct access to NVRAM
+- Replaced `SSDT-HV-CPU.dsl` with `SSDT-HV-DEV.dsl` for compatiblity with older macOS versions on Windows 10 and newer
+- Updated builtin zlib library to 1.2.12
+- Changed ocpasswordgen not to print characters on password input
+- Added ProcessKernel utility for testing kext injection based on configs
+- Fixed crash while using `SysReport` on Pentium 4 systems
+- Fixed crash after ExitBootServices() is called while using DEBUG builds and file logging
+- Fixed 32-bit userspace build support on macOS (use High Sierra 10.13 and below)
+- Added basic set of NetworkPkg drivers with HTTP boot support
+
+#### v0.8.3
+- Added ext4 file system driver
+- Added support for macOS 13 DP3 Kernel Collection
+- Added `--force-device` option to AudioDxe, allowing UEFI audio on HDA contollers which misreport themselves as non-HDA audio devices
+- Provided optional unsafe fast file logging (suitable only for firmware with a fully compliant FAT32 driver)
+- Fixed incorrect OSBundleLibraries_x86_64 handling during cacheless injection
+- Changed RsaTool not to link against system ssl on macOS
+- Fixed crash during cacheless injection when kext blocking is enabled
+- Removed default codec connection delay from AudioDxe
+- Added optional `--codec-setup-delay` argument to AudioDxe
+- Changed units of `Audio` -> `SetupDelay` from microseconds to milliseconds (divide previous value by 1000 if using this setting)
+- Fixed incorrect FAT binary slice being selected under macOS 10.4.11 when performing a cacheless boot
+- Fixed rare assertion caused by label animation initialisation in OpenCanopy
+- Added `--show-csr` option for `Toggle SIP` boot menu entry
+- Added macOS 10.4 and 10.5 support to `AllowRelocationBlock` Booter quirk
+- Added CPU cache info injection for macOS 10.4 to `ProvideCurrentCpuInfo` quirk
+- Added emulated NVRAM driver for use separately from OpenDuet
+- Added support for NVRAM reset and set default boot entry when using emulated NVRAM
+- Upgraded emulated NVRAM logout script to allow unsupervised installation of recent macOS OTA updates
+- Added `Driver` -> `LoadEarly` for drivers which need to be loaded before NVRAM init
+
+#### v0.8.2
+- Fixed `AppleCpuPmCfgLock` on macOS 13
+- Fixed `DummyPowerManagement` on macOS 13
+- Updated builtin firmware versions for SMBIOS and the rest
+- Added macOS 13 support for `AvoidRuntimeDefrag` Booter quirk
+- Added injected kext bundle version printing in DEBUG builds
+- Added Linux compatibility for CreateVault scripts
+
+#### v0.8.1
+- Improved `ExtendBTFeatureFlags` quirk on newer macOS versions, thx @lvs1974
+- Added notes about DMAR table and `ForceAquantiaEthernet`, thx @kokowski
+- Added System option in `LauncherOption` property, thx @stevezhengshiqi
+- Updated note about `CustomPciSerialDevice`, thx @joevt
+- Added read-only driver for NTFS
+- Switched `Reset NVRAM` and `Toggle SIP` to configurable boot entry protocol drivers
+- Supported optional Apple firmware-native NVRAM reset, thx @Syncretic
+- Supported NVRAM reset optionally retaining BIOS boot entries
+- Supported user specified `csr-active-config` value for Toggle SIP
+- Added optional `Enabled` and `Disabled` flavours for `Toggle SIP` (allows theme designers to provide distinct icons)
+- Added PIIX4 ACPI PM timer detection for TSC calculations on Hyper-V Gen1 VMs
+
+#### v0.8.0
+- Added support for early log preservation
+- Switched to Python 3 in scripts (use `python /path/to/script` to force Python 2)
+- Added `ForceAquantiaEthernet` for Aquantia AQtion AQC-107s based 10GbE network cards support, thx @Mieze and @Shikumo
+- Updated builtin firmware versions for SMBIOS and the rest
+- Added `Misc` -> `Serial` section to customise serial port properties
+- Added `CustomPciSerialDevice` quirk for XNU to correctly recognise customised external serial devices
+
 #### v0.7.9
 - Added auto-detect `macOS Installer` volume name for use when `.disk_label` file cannot be displayed
 - Added `--restore-nosnoop` flag to AudioDxe, making v0.7.7 fix for Windows sound opt-in
@@ -10,6 +140,11 @@ OpenCore Changelog
 - Added kext blocking `Strategy` for prelinked and newer
 - Added global MSR 35h fix to `ProvideCurrentCpuInfo`, allowing `-cpu host` in KVM
 - Fixed potential memory corruption with AVX acceleration enabled
+- Added `LogModules` for positive and negative log filtering by modules
+- Renamed OpenLinuxBoot driver argument from `partuuidopts:{PARTUUID}` to `autoopts:{PARTUUID}`
+- Supported booting Linux from stand-alone `/boot` partition without `/loader/entries` files (user must specify full kernel boot options)
+- Handled XML entities in driver arguments
+- Updated underlying EDK II package to edk2-stable202202
 
 #### v0.7.8
 - Updated ocvalidate to warn about insecure `DmgLoading` with secure `SecureBootModel` (already disallowed in runtime)
@@ -205,7 +340,7 @@ OpenCore Changelog
 - Fixed ACPI table magic corruption during patching
 - Fixed unnatural OpenCanopy and FileVault 2 cursor movement
 - Fixed OpenCanopy interrupt handling causing missed events and lag
-- Improved OpenCanopy double-click detection 
+- Improved OpenCanopy double-click detection
 - Reduced OpenCanopy touch input lag and improved usability
 - Improved keypress responsiveness in OpenCanopy and builtin pickers
 - Improved non-repeating key detection in OpenCanopy and builtin pickers
