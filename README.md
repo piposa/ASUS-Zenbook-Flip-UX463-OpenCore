@@ -18,7 +18,7 @@ sysInfo | neoFetch
 # Laptop's Hardware
 - <b>Model</b>: ASUS Zenbook UX463F
 - <b>Bios</b>: 304
-- <b>CPU</b>: Intel(R) Core(TM) i7-10210U CPU @ 1.60GHz
+- <b>CPU</b>: Intel(R) Core(TM) i7-10510U CPU @ 1.80GHz
 - <b>GPU</b>: Intel UHD Graphics 620
 - <b>Storage</b>: 512GB M.2 NVMe™ PCIe® SSD with 32GB Intel® Optane™ Memory
 - <b>RAM</b>: 16GB LPDDR3
