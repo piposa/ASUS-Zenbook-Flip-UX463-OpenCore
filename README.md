@@ -6,6 +6,7 @@ sysInfo | neoFetch
 ![T460](Images/SysInfo.png) | ![T460](Images/NeoFetch.png)
 
 # Update History
+- [x] macOS 14.4.1
 - [x] macOS 14.1
 - [x] macOS 11.7.5
 - [x] macOS 11.6.5
@@ -17,10 +18,10 @@ sysInfo | neoFetch
 # Laptop's Hardware
 - <b>Model</b>: ASUS Zenbook UX463F
 - <b>Bios</b>: 304
-- <b>CPU</b>: Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz
+- <b>CPU</b>: Intel(R) Core(TM) i7-10210U CPU @ 1.60GHz
 - <b>GPU</b>: Intel UHD Graphics 620
 - <b>Storage</b>: 512GB M.2 NVMe™ PCIe® SSD with 32GB Intel® Optane™ Memory
-- <b>RAM</b>: 8GB LPDDR3
+- <b>RAM</b>: 16GB LPDDR3
 - <b>Screen</b>: 14" FHD (1920x1080) IPS
 - <b>Wi-Fi</b>: Intel Wireless-AC 9462
 - <b>Ethernet</b>: Realtek RTL8153 Gigabit Ethernet Adapter
